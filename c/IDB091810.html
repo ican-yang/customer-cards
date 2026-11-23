@@ -108,11 +108,11 @@
     <h1>东华先生 · 深圳德懿府智慧客餐厅</h1>
     <div class="badges"><span class="badge">已交付</span><span class="badge gold">本方案全部设备 · 质保 3 年</span></div>
     <div class="warranty" id="warrantyBox">
-      <div class="big" id="warranty-text">质保自交付日起算</div>
-      <div class="date" id="warranty-date">计划交付 2026-11-25</div>
-      <div class="small" id="warranty-sub">交付后自动开始计时 · 线上服务五年</div>
+      <div class="big" id="warranty-text">质保中</div>
+      <div class="date" id="warranty-date">质保至 2029-11-23</div>
+      <div class="small" id="warranty-sub">线上服务五年 · 小问题远程 30 分钟免费处理</div>
     </div>
-    <div class="grid"><div class="kv"><div class="k">交付日期</div><div class="v">2026-11-25（计划）</div></div><div class="kv"><div class="k">主开关</div><div class="v">情景开关</div></div><div class="kv"><div class="k">控制方式</div><div class="v">开关 / 语音 / APP</div></div><div class="kv"><div class="k">当前状态</div><div class="v" style="color:#2f7d5b">已交付</div></div></div>
+    <div class="grid"><div class="kv"><div class="k">交付日期</div><div class="v">2026-11-23</div></div><div class="kv"><div class="k">主开关</div><div class="v">情景开关</div></div><div class="kv"><div class="k">控制方式</div><div class="v">开关 / 语音 / APP</div></div><div class="kv"><div class="k">当前状态</div><div class="v" style="color:#2f7d5b">已交付</div></div></div>
     
   </div>
 
@@ -161,8 +161,29 @@
   m.addEventListener('click', function(e){ if(e.target===m){ m.classList.remove('on'); document.body.style.overflow=''; } });
 })();
 (function(){ 
+  var end = new Date(2029, 10, 23);
+  var now = new Date(); now.setHours(0,0,0,0);
+  var el = document.getElementById('warranty-text');
+  var dEl = document.getElementById('warranty-date');
+  var sEl = document.getElementById('warranty-sub');
   var box = document.getElementById('warrantyBox');
-  document.getElementById('warranty-text').textContent = "质保自交付日起算";
+  var ymd = end.getFullYear() + '-' + String(end.getMonth()+1).padStart(2,'0') + '-' + String(end.getDate()).padStart(2,'0');
+  if (now >= end) {
+    box.classList.add('expired');
+    el.textContent = '质保已到期';
+    dEl.textContent = '已于 ' + ymd + ' 到期';
+    sEl.textContent = '线上服务仍然在线 · 可联系杨工续保';
+  } else {
+    var cur = new Date(now.getTime()), y = 0, m = 0, d = 0, tmp;
+    while (true) { tmp = new Date(cur.getTime()); tmp.setFullYear(tmp.getFullYear()+1); if (tmp <= end) { y++; cur = tmp; } else break; }
+    while (true) { tmp = new Date(cur.getTime()); tmp.setMonth(tmp.getMonth()+1); if (tmp <= end) { m++; cur = tmp; } else break; }
+    d = Math.floor((end - cur) / 86400000);
+    var txt = '质保中 · 还剩 ';
+    if (y > 0) txt += y + ' 年';
+    if (m > 0) txt += (y > 0 ? ' ' : '') + m + ' 个月';
+    if (d > 0) txt += ((y > 0 || m > 0) ? ' ' : '') + d + ' 天';
+    el.textContent = txt;
+  }
  })();
 (function(){ var cy = new Date().getFullYear() - 2013; if (cy>0) document.getElementById('craft-years').textContent = cy; })();
 </script>
