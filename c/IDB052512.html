@@ -162,7 +162,7 @@
 })();
 (function(){ 
   var end = new Date(2029, 7, 21);
-  var now = new Date();
+  var now = new Date(); now.setHours(0,0,0,0);
   var el = document.getElementById('warranty-text');
   var dEl = document.getElementById('warranty-date');
   var sEl = document.getElementById('warranty-sub');
