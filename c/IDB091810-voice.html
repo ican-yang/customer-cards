@@ -20,8 +20,7 @@
   h2{font-size:14px;margin:0 0 10px;letter-spacing:.06em;color:var(--brand)}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{font-size:14px;line-height:1.2;padding:9px 13px;border:1px solid #e6e2d9;background:#fff;
-    border-radius:999px;color:var(--ink);cursor:pointer}
-  .chip:active{background:#f2f7f4;border-color:#dcebe2}
+    border-radius:999px;color:var(--ink)}
   .chip small{color:var(--muted);font-size:11px;margin-left:4px}
   .tip{background:linear-gradient(180deg,#f2f7f4,#eaf2ed);border:1px solid #dcebe2;border-radius:12px;
     padding:12px 14px;font-size:13px;color:#2c4a40;line-height:1.7}
@@ -37,7 +36,7 @@
 
   <div class="card">
     <h1>东华先生 · 深圳德懿府智慧客餐厅</h1>
-    <div class="sub">小爱同学 · 点一下口令可复制</div>
+    <div class="sub">小爱同学 · 照着念就行</div>
   </div>
 
   <div class="card"><div class="tip">
@@ -54,15 +53,6 @@
 </div>
 
 <script>
-document.querySelectorAll('.chip').forEach(function(c){
-  c.addEventListener('click', function(){
-    var t=c.getAttribute('data-c')||'';
-    var done=function(){ var o=c.textContent; c.textContent='已复制'; setTimeout(function(){ c.textContent=o; },1000); };
-    if (navigator.clipboard) { navigator.clipboard.writeText(t).then(done); }
-    else { var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
-      try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta); }
-  });
-});
 (function(){ var y=new Date().getFullYear()-2013; if(y>0) document.getElementById('y').textContent=y; })();
 </script>
 </body></html>

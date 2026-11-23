@@ -7,70 +7,52 @@
   :root{--ink:#1c2b26;--muted:#6b7a74;--line:#e6e2d9;--bg:#f6f4ef;--brand:#1f3d33;--gold:#b08d57;--ok:#2f7d5b}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-    padding:16px 14px 40px}
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;padding:16px 14px 40px}
   .wrap{max-width:480px;margin:0 auto}
-  .brandrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-  .brand{display:flex;align-items:center;gap:8px;font-weight:600;letter-spacing:.02em;font-size:15px}
+  .brandrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px}
   .back{font-size:13px;color:var(--brand);text-decoration:none;border:1px solid #dcebe2;background:#f2f7f4;
-    padding:5px 12px;border-radius:999px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px;
+    padding:5px 12px;border-radius:999px;white-space:nowrap}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px;
     box-shadow:0 1px 2px rgba(28,43,38,.04),0 8px 24px rgba(28,43,38,.05)}
-  h1{font-size:21px;line-height:1.35;margin:0 0 6px}
-  .sub{color:var(--muted);font-size:14px}
-  h2{font-size:15px;margin:0 0 12px;letter-spacing:.04em;color:var(--brand);display:flex;align-items:center;gap:8px}
-  h2 .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
-  .tip{background:linear-gradient(180deg,#f2f7f4,#eaf2ed);border:1px solid #dcebe2;border-radius:12px;padding:12px 14px;
-    font-size:13px;color:#2c4a40;line-height:1.7}
+  h1{font-size:20px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px}
+  h2{font-size:14px;margin:0 0 10px;letter-spacing:.06em;color:var(--brand)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:14px;line-height:1.2;padding:9px 13px;border:1px solid #e6e2d9;background:#fff;
+    border-radius:999px;color:var(--ink)}
+  .chip small{color:var(--muted);font-size:11px;margin-left:4px}
+  .tip{background:linear-gradient(180deg,#f2f7f4,#eaf2ed);border:1px solid #dcebe2;border-radius:12px;
+    padding:12px 14px;font-size:13px;color:#2c4a40;line-height:1.7}
   .tip b{color:var(--brand)}
-  .cmd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px dashed #eee}
-  .cmd:last-child{border-bottom:0;padding-bottom:2px}
-  .cmd .t{font-size:15px;font-weight:600}
-  .cmd .t small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
-  .copy{flex:0 0 auto;font-size:12px;color:var(--brand);border:1px solid #dcebe2;background:#f6faf8;
-    border-radius:8px;padding:4px 10px;cursor:pointer}
-  .copy:active{background:#eaf2ed}
-  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:18px;line-height:1.9}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:16px;line-height:1.8}
 </style></head>
 <body><div class="wrap">
 
   <div class="brandrow">
     <div class="brand"><img src="data:image/png;base64,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" alt="LVMIUNION" style="width:26px;height:26px;border-radius:8px;display:block"> 语音控制口令</div>
-    <a class="back" href="./IDB100916.html">← 返回服务卡</a>
+    <a class="back" href="./IDB100916.html">返回服务卡</a>
   </div>
 
   <div class="card">
     <h1>刘女士 · 深圳天泽玉河府三房</h1>
-    <div class="sub">小爱同学 · 全屋语音控制口令</div>
+    <div class="sub">小爱同学 · 照着念就行</div>
   </div>
 
   <div class="card"><div class="tip">
-    <b>怎么用：</b>先说「<b>小爱同学</b>」，等音箱应答后再说话。<br>
-    人在哪个房间，就对最近的音箱说；说不准时，先加房间名（例如"客厅"）。
+    先说「<b>小爱同学</b>」，等它应答再说；不确定时先加房间名，例如「<b>客厅</b>开灯」。
   </div></div>
 
-  <div class="card"><h2><span class="dot"></span>灯光</h2><div class="cmd"><div class="t">打开客厅灯<small>全开</small></div><button class="copy" data-c="打开客厅灯">复制</button></div><div class="cmd"><div class="t">关闭客厅灯<small>全关</small></div><button class="copy" data-c="关闭客厅灯">复制</button></div><div class="cmd"><div class="t">客厅灯调到50%<small>亮度</small></div><button class="copy" data-c="客厅灯调到50%">复制</button></div><div class="cmd"><div class="t">全屋关灯<small>出门前一句话</small></div><button class="copy" data-c="全屋关灯">复制</button></div></div><div class="card"><h2><span class="dot"></span>窗帘</h2><div class="cmd"><div class="t">打开客厅窗帘</div><button class="copy" data-c="打开客厅窗帘">复制</button></div><div class="cmd"><div class="t">关闭主卧窗帘</div><button class="copy" data-c="关闭主卧窗帘">复制</button></div><div class="cmd"><div class="t">窗帘开到一半<small>50%</small></div><button class="copy" data-c="窗帘开到一半">复制</button></div></div><div class="card"><h2><span class="dot"></span>场景</h2><div class="cmd"><div class="t">回家模式<small>客厅灯 + 窗帘 + 空调</small></div><button class="copy" data-c="回家模式">复制</button></div><div class="cmd"><div class="t">离家模式<small>全屋关灯 + 关窗帘</small></div><button class="copy" data-c="离家模式">复制</button></div><div class="cmd"><div class="t">观影模式<small>灯光调暗 + 关窗帘</small></div><button class="copy" data-c="观影模式">复制</button></div><div class="cmd"><div class="t">睡眠模式<small>全屋关灯 + 留夜灯</small></div><button class="copy" data-c="睡眠模式">复制</button></div></div><div class="card"><h2><span class="dot"></span>音乐</h2><div class="cmd"><div class="t">播放音乐</div><button class="copy" data-c="播放音乐">复制</button></div><div class="cmd"><div class="t">音量调到30</div><button class="copy" data-c="音量调到30">复制</button></div></div><div class="card"><h2><span class="dot"></span>日常</h2><div class="cmd"><div class="t">十分钟后提醒我关火</div><button class="copy" data-c="十分钟后提醒我关火">复制</button></div></div>
+  <div class="card"><h2>灯光</h2><div class="chips"><span class="chip" data-c="打开客厅灯">打开客厅灯<small>全开</small></span><span class="chip" data-c="关闭客厅灯">关闭客厅灯<small>全关</small></span><span class="chip" data-c="客厅灯调到50%">客厅灯调到50%<small>亮度</small></span><span class="chip" data-c="全屋关灯">全屋关灯<small>出门前一句话</small></span></div></div><div class="card"><h2>窗帘</h2><div class="chips"><span class="chip" data-c="打开客厅窗帘">打开客厅窗帘</span><span class="chip" data-c="关闭主卧窗帘">关闭主卧窗帘</span><span class="chip" data-c="窗帘开到一半">窗帘开到一半<small>50%</small></span></div></div><div class="card"><h2>场景</h2><div class="chips"><span class="chip" data-c="回家模式">回家模式<small>客厅灯 + 窗帘 + 空调</small></span><span class="chip" data-c="离家模式">离家模式<small>全屋关灯 + 关窗帘</small></span><span class="chip" data-c="观影模式">观影模式<small>灯光调暗 + 关窗帘</small></span><span class="chip" data-c="睡眠模式">睡眠模式<small>全屋关灯 + 留夜灯</small></span></div></div><div class="card"><h2>音乐</h2><div class="chips"><span class="chip" data-c="播放音乐">播放音乐</span><span class="chip" data-c="音量调到30">音量调到30</span></div></div><div class="card"><h2>日常</h2><div class="chips"><span class="chip" data-c="十分钟后提醒我关火">十分钟后提醒我关火</span></div></div>
 
-  <div class="card"><h2><span class="dot"></span>说不准怎么办</h2>
-    <div class="tip" style="background:#fbf8f1;border-color:#ecdfc4;color:#6b5a3e">
-      1. 加房间名再说一遍，例如「<b>客厅</b>打开灯」<br>
-      2. 换个说法：「把灯关了」「灯关一下」<br>
-      3. 还不行就在微信里喊我，我远程看一下
-    </div>
-  </div>
+  <div class="card"><div class="tip" style="background:#fbf8f1;border-color:#ecdfc4;color:#6b5a3e">
+    喊了没反应？① 加房间名再说一遍 ② 换个说法 ③ 微信找我，我远程看
+  </div></div>
 
-  <footer>智能杨工 · 全屋智能 <span id="y">13</span> 年<br>口令会根据你家的实际场景更新，以页面为准</footer>
+  <footer>智能杨工 · 全屋智能 <span id="y">13</span> 年<br>口令会随您家场景更新，以本页为准</footer>
 </div>
 
 <script>
-document.querySelectorAll('.copy').forEach(function(b){
-  b.addEventListener('click', function(){
-    var t=b.getAttribute('data-c')||'';
-    if (navigator.clipboard) { navigator.clipboard.writeText(t).then(function(){ b.textContent='已复制'; setTimeout(function(){ b.textContent='复制'; },1200); }); }
-    else { var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
-      try{ document.execCommand('copy'); b.textContent='已复制'; setTimeout(function(){ b.textContent='复制'; },1200); }catch(e){} document.body.removeChild(ta); }
-  });
-});
-(function(){ var c=new Date().getFullYear()-2013; if(c>0) document.getElementById('y').textContent=c; })();
+(function(){ var y=new Date().getFullYear()-2013; if(y>0) document.getElementById('y').textContent=y; })();
 </script>
 </body></html>
