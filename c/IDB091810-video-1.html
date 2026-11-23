@@ -62,10 +62,6 @@
 
   <div style="position:relative;border-radius:16px;overflow:hidden;background:#000">
     <video id="vp" controls playsinline preload="metadata" poster="https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.jpg" src="https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.mp4" style="width:100%;display:block;max-height:78vh;background:#000"></video>
-    <div class="vrail" style="bottom:70px">
-      <button class="rail" id="vLike"><span class="ico">👍</span><span class="num" id="vLikeNum">0</span></button>
-      <button class="rail" id="vShare"><span class="ico">↗</span><span class="num" id="vShareNum">0</span></button>
-    </div>
   </div>
 
   <div style="padding:14px 2px 0">
@@ -79,28 +75,6 @@
 
 <script>
 (function(){{
-  var K='IDB091810-1';
-  function ls(k,d){{ try{{ var x=localStorage.getItem(k); return x===null?d:x; }}catch(e){{ return d; }} }}
-  function ss(k,v){{ try{{ localStorage.setItem(k,v); }}catch(e){{}} }}
-  var likeBtn=document.getElementById('vLike'), likeNum=document.getElementById('vLikeNum');
-  var shareBtn=document.getElementById('vShare'), shareNum=document.getElementById('vShareNum');
-  var base=0, sbase=0;
-  function paint(){{
-    var liked = ls('like:'+K,'0')==='1';
-    likeBtn.classList.toggle('on', liked);
-    likeNum.textContent = base + (liked?1:0);
-    var sc = parseInt(ls('share:'+K,'0'),10)||0;
-    shareNum.textContent = sbase + sc;
-  }}
-  paint();
-  likeBtn.addEventListener('click', function(){{ ss('like:'+K, ls('like:'+K,'0')==='1'?'0':'1'); paint(); }});
-  shareBtn.addEventListener('click', function(){{
-    var url=location.href, title=document.title;
-    var done=function(){{ var n=parseInt(ls('share:'+K,'0'),10)||0; ss('share:'+K,String(n+1)); paint(); }};
-    if(navigator.share){{ navigator.share({{title:title,url:url}}).then(done).catch(function(){{}}); }}
-    else if(navigator.clipboard){{ navigator.clipboard.writeText(url).then(done); }}
-    else {{ done(); }}
-  }});
   var y=new Date().getFullYear()-2013; if(y>0) document.getElementById('y').textContent=y;
 }})();
 </script>
