@@ -39,7 +39,16 @@
   footer{text-align:center;color:var(--muted);font-size:12px;margin-top:16px;line-height:1.8}
   .mask{position:fixed;inset:0;background:rgba(16,22,19,.82);display:none;z-index:99;align-items:center;justify-content:center;padding:16px}
   .mask.on{display:flex}
-  .vbox{width:100%;max-width:520px}
+  .vbox{width:100%;max-width:520px;position:relative}
+  .xclose{position:absolute;right:6px;top:6px;width:34px;height:34px;border:0;border-radius:50%;
+    background:rgba(0,0,0,.55);color:#fff;font-size:16px;line-height:1;display:grid;place-items:center;z-index:2}
+  .vrail{position:absolute;right:10px;bottom:104px;display:flex;flex-direction:column;gap:18px;align-items:center;z-index:3}
+  .rail{background:transparent;border:0;color:#fff;display:flex;flex-direction:column;align-items:center;gap:4px;
+    text-align:center;padding:0}
+  .rail .ico{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.4);display:grid;place-items:center;
+    font-size:21px;line-height:1;backdrop-filter:blur(2px)}
+  .rail .num{font-size:11px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  .rail.on .ico{background:rgba(214,88,52,.85)}
   .vbox video{width:100%;border-radius:12px;background:#000;display:block}
   .vbox .vtt{color:#fff;font-size:13px;margin:8px 2px 0}
   .vbox .vclose{display:block;width:100%;margin-top:10px;border:0;border-radius:10px;padding:11px;
@@ -61,49 +70,78 @@
     先说「<b>小爱同学</b>」，等它应答再说；不确定时先加房间名，例如「<b>客厅</b>开灯」。
   </div></div>
 
-  <div class="card"><h2>灯光</h2><div class="chips"><span class="chip">打开/关闭 客厅主灯</span><span class="chip">打开/关闭 客厅灯带</span><span class="chip">打开/关闭 餐厅灯</span><span class="chip">打开/关闭 厨房灯</span><span class="chip">打开/关闭 阳台灯</span></div><div class="vwrap"><div class="vcard" data-src="https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.mp4" data-poster="https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.jpg" data-title="灯光效果（示例）"><div class="thumb" style="background-image:url('https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.jpg')"><span class="play">▶</span></div><div class="vmeta"><div class="vt">灯光效果（示例）</div><button class="like" data-key="like:IDB091810:1" data-base="0">赞 <span>0</span></button></div></div></div></div><div class="card"><h2>窗帘</h2><div class="chips"><span class="chip">打开/关闭 客厅窗帘</span><span class="chip">客厅窗帘开到一半<small>50%</small></span><span class="chip">打开/关闭 餐厅窗帘</span><span class="chip">餐厅窗帘开到一半<small>50%</small></span></div></div><div class="card"><h2>电视</h2><div class="chips"><span class="chip">打开/关闭 电视</span><span class="chip">电视音量调大</span><span class="chip">电视音量调小</span></div></div><div class="card"><h2>空调</h2><div class="chips"><span class="chip">打开/关闭 空调</span><span class="chip">空调调到26度</span><span class="chip">空调风速 调大/调小</span></div></div><div class="card"><h2>场景</h2><div class="chips"><span class="chip">回家模式<small style="display:block;margin:3px 0 0 0;font-size:11.5px;line-height:1.45;color:#6b7a74">玄关区客厅区灯亮，玄关区延迟关。</small></span><span class="chip">离家模式<small style="display:block;margin:3px 0 0 0;font-size:11.5px;line-height:1.45;color:#6b7a74">所有灯关闭，玄关区灯延迟关。</small></span><span class="chip">会客模式<small>客餐厅整体明亮</small></span></div></div><div class="card"><h2>音乐</h2><div class="chips"><span class="chip">播放音乐</span><span class="chip">音量调到30</span></div></div>
+  <div class="card"><h2>灯光</h2><div class="chips"><span class="chip">打开/关闭 客厅主灯</span><span class="chip">打开/关闭 客厅灯带</span><span class="chip">打开/关闭 餐厅灯</span><span class="chip">打开/关闭 厨房灯</span><span class="chip">打开/关闭 阳台灯</span></div><div class="vwrap"><div class="vcard" data-src="https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.mp4" data-poster="https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.jpg" data-title="灯光效果（示例）"><div class="thumb" style="background-image:url('https://736d-smarthome-ican-d2g7stixna3e02009-1536647220.cos.ap-shanghai.myqcloud.com/v/IDB091810-light-demo.jpg')"><span class="play">▶</span></div><div class="vmeta"><div class="vt">灯光效果（示例）</div><button class="like" data-key="like:IDB091810:1" data-base="0" data-share="0">赞 <span>0</span></button></div></div></div></div><div class="card"><h2>窗帘</h2><div class="chips"><span class="chip">打开/关闭 客厅窗帘</span><span class="chip">客厅窗帘开到一半<small>50%</small></span><span class="chip">打开/关闭 餐厅窗帘</span><span class="chip">餐厅窗帘开到一半<small>50%</small></span></div></div><div class="card"><h2>电视</h2><div class="chips"><span class="chip">打开/关闭 电视</span><span class="chip">电视音量调大</span><span class="chip">电视音量调小</span></div></div><div class="card"><h2>空调</h2><div class="chips"><span class="chip">打开/关闭 空调</span><span class="chip">空调调到26度</span><span class="chip">空调风速 调大/调小</span></div></div><div class="card"><h2>场景</h2><div class="chips"><span class="chip">回家模式<small style="display:block;margin:3px 0 0 0;font-size:11.5px;line-height:1.45;color:#6b7a74">玄关区客厅区灯亮，玄关区延迟关。</small></span><span class="chip">离家模式<small style="display:block;margin:3px 0 0 0;font-size:11.5px;line-height:1.45;color:#6b7a74">所有灯关闭，玄关区灯延迟关。</small></span><span class="chip">会客模式<small>客餐厅整体明亮</small></span></div></div><div class="card"><h2>音乐</h2><div class="chips"><span class="chip">播放音乐</span><span class="chip">音量调到30</span></div></div>
 
   <div class="card"><div class="tip" style="background:#fbf8f1;border-color:#ecdfc4;color:#6b5a3e">
     喊了没反应？① 加房间名再说一遍 ② 换个说法 ③ 微信找我，我远程看
   </div></div>
 
-  <footer>智能杨工 · 全屋智能 <span id="y">13</span> 年<br>口令与视频会随您家场景更新，以本页为准</footer>
+  <footer>智能杨工 · 全屋智能 <span id="y">13</span> 年<br>实拍片段仅展示部分效果，完整效果以现场为准<br>口令与视频会随您家场景持续更新</footer>
 </div>
 
 <div class="mask" id="vmask"><div class="vbox">
+  <button class="xclose" id="vclose">✕</button>
   <video id="vplayer" controls playsinline preload="none"></video>
   <div class="vtt" id="vtitle"></div>
-  <button class="vclose" id="vclose">关闭</button>
+  <div class="vrail">
+    <button class="rail" id="vLike"><span class="ico">👍</span><span class="num" id="vLikeNum">0</span></button>
+    <button class="rail" id="vShare"><span class="ico">↗</span><span class="num" id="vShareNum">0</span></button>
+  </div>
 </div></div>
 
 <script>
 (function(){
   var mask=document.getElementById('vmask'), v=document.getElementById('vplayer'), t=document.getElementById('vtitle');
+  var likeBtn=document.getElementById('vLike'), likeNum=document.getElementById('vLikeNum');
+  var shareBtn=document.getElementById('vShare'), shareNum=document.getElementById('vShareNum');
+  var cur={key:'', base:0, share:0};
+
+  function ls(k, d){ try{ var x=localStorage.getItem(k); return x===null?d:x; }catch(e){ return d; } }
+  function ss(k, val){ try{ localStorage.setItem(k, val); }catch(e){} }
+
+  function paint(){
+    var liked = ls('like:'+cur.key,'0')==='1';
+    likeBtn.classList.toggle('on', liked);
+    likeNum.textContent = cur.base + (liked?1:0);
+    var sc = parseInt(ls('share:'+cur.key,'0'),10) || 0;
+    shareNum.textContent = cur.share + sc;
+  }
+
   document.querySelectorAll('.vcard').forEach(function(c){
     c.addEventListener('click', function(){
-      v.src=c.getAttribute('data-src'); v.poster=c.getAttribute('data-poster')||''; t.textContent=c.getAttribute('data-title')||'';
+      cur.key = c.getAttribute('data-key') || '';
+      cur.base = parseInt(c.getAttribute('data-base')||'0',10);
+      cur.share = parseInt(c.getAttribute('data-share')||'0',10);
+      v.src=c.getAttribute('data-src'); v.poster=c.getAttribute('data-poster')||'';
+      t.textContent=c.getAttribute('data-title')||'';
+      paint();
       mask.classList.add('on'); document.body.style.overflow='hidden';
       v.play().catch(function(){});
     });
   });
+
+  likeBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var liked = ls('like:'+cur.key,'0')==='1';
+    ss('like:'+cur.key, liked?'0':'1');
+    paint();
+  });
+
+  shareBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var url = location.origin + location.pathname;
+    var title = t.textContent || document.title;
+    var done = function(){ var n=parseInt(ls('share:'+cur.key,'0'),10)||0; ss('share:'+cur.key, String(n+1)); paint(); };
+    if (navigator.share) {
+      navigator.share({title:title, url:url}).then(done).catch(function(){});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function(){ done(); t.textContent = title + '（链接已复制）'; setTimeout(function(){ t.textContent = title; },1500); });
+    } else { done(); }
+  });
+
   function close(){ mask.classList.remove('on'); document.body.style.overflow=''; v.pause(); v.removeAttribute('src'); v.load(); }
   document.getElementById('vclose').addEventListener('click', close);
   mask.addEventListener('click', function(e){ if(e.target===mask) close(); });
-
-  document.querySelectorAll('.like').forEach(function(b){
-    var key=b.getAttribute('data-key'), base=parseInt(b.getAttribute('data-base')||'0',10);
-    var span=b.querySelector('span');
-    var on=false;
-    try{ on = localStorage.getItem(key)==='1'; }catch(e){}
-    function render(){ span.textContent = base + (on?1:0); b.classList.toggle('on', on); }
-    render();
-    b.addEventListener('click', function(e){
-      e.stopPropagation();
-      on = !on;
-      try{ localStorage.setItem(key, on?'1':'0'); }catch(e){}
-      render();
-    });
-  });
 })();
 (function(){ var y=new Date().getFullYear()-2013; if(y>0) document.getElementById('y').textContent=y; })();
 </script>
