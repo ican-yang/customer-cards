@@ -23,7 +23,7 @@
     border-radius:999px;color:var(--ink)}
   .chip small{color:var(--muted);font-size:11px;margin-left:4px}
   .vwrap{margin-top:12px;display:grid;gap:10px}
-  .vcard{display:block;border:1px solid #eceae2;border-radius:12px;overflow:hidden;background:#fbfaf6;text-decoration:none;color:inherit}
+  .vcard{display:block;cursor:pointer;border:1px solid #eceae2;border-radius:12px;overflow:hidden;background:#fbfaf6;text-decoration:none;color:inherit}
   .thumb{position:relative;width:100%;aspect-ratio:16/9;background:#e9e5da center/cover no-repeat}
   .thumb .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
     width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.52);color:#fff;
@@ -39,6 +39,11 @@
   footer{text-align:center;color:var(--muted);font-size:12px;margin-top:16px;line-height:1.8}
   .mask{position:fixed;inset:0;background:rgba(16,22,19,.82);display:none;z-index:99;align-items:center;justify-content:center;padding:16px}
   .mask.on{display:flex}
+  .xclose{position:absolute;right:8px;top:8px;width:36px;height:36px;border:0;border-radius:50%;
+    background:rgba(0,0,0,.55);color:#fff;font-size:17px;line-height:1;display:grid;place-items:center;z-index:3}
+  .vbox{position:relative;width:100%;max-width:520px}
+  .vbox video{width:100%;max-height:76vh;border-radius:14px;background:#000;display:block}
+  .vtt{color:#fff;font-size:14px;margin-top:10px;text-align:center}
   .vbox{width:100%;max-width:520px;position:relative}
   .xclose{position:absolute;right:6px;top:6px;width:34px;height:34px;border:0;border-radius:50%;
     background:rgba(0,0,0,.55);color:#fff;font-size:16px;line-height:1;display:grid;place-items:center;z-index:2}
